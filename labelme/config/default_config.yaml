@@ -1,4 +1,4 @@
-auto_save: false
+auto_save: true
 display_label_popup: true
 store_data: true
 keep_prev: false
@@ -122,3 +122,20 @@ shortcuts:
   show_all_polygons: null
   hide_all_polygons: null
   toggle_all_polygons: T
+
+image_directory: J:\labelme_piste_data\Images
+labels:
+  - piste_left_end_far
+  - piste_left_end_near
+  - piste_left_warn_far
+  - piste_left_warn_near
+  - piste_left_onguard_far
+  - piste_left_onguard_near
+  - piste_center_far
+  - piste_center_near
+  - piste_right_onguard_far
+  - piste_right_onguard_near
+  - piste_right_warn_far
+  - piste_right_warn_near
+  - piste_right_end_far
+  - piste_right_end_near

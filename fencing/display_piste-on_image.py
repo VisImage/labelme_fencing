@@ -3,6 +3,10 @@ import cv2
 import numpy as np
 import json
 
+# this file is originated at F:\gitSources\labelme_fencing\fencing
+# as a clone from https://github.com/VisImage/labelme_fencing
+# please do not modify otherwise
+
 class piste_base:
     def __init__(self, id):
         self.piste_id = id
@@ -54,8 +58,47 @@ class Piste(piste_base):
             # Compute the homography matrix
             _src = np.array(pts_src, dtype=np.float32)
             _dst = np.array(pts_dst, dtype=np.float32)
-            self.homography, _ = cv2.findHomography(_src,_dst,cv2.RANSAC,5.0)
+            self.homography, _ = cv2.findHomography(_src,_dst,cv2.RANSAC,15.0)
+    
+    def extend_line(self,w,h,line):   
+        def get_boundary_point(width,height,pt,pt_end):
+            # Ray origin and direction
+            # origin = np.array(pt_end, dtype=np.float32)
+            # direction = np.array(pt - pt_end, dtype=np.float32)  # Example direction
 
+            # # Normalize direction
+            # direction /= np.linalg.norm(direction)
+            origin = pt_end
+            direction = pt - pt_end  # Example direction
+
+            pt0 = pt
+            count = 0
+            while width > pt[0] >=0 and height > pt[1] >0:
+                count = count + 1
+                pt = pt0 + count*direction 
+            return pt
+        
+        output_line = [[],[]]
+        if len(line) != 2:
+            print("please input a list with 2 points")
+            return []
+        (k0, v0),  = line[0].items()
+        (k1, v1),  = line[1].items()
+
+        if "_end_" in k0:
+            output_line[0] = v0
+        else:           
+            pt0 = get_boundary_point (w,h,v0,v1)
+            output_line[0] = pt0
+
+        if "_end_" in k1:
+            output_line[1] = v1
+        else:           
+            pt1 = get_boundary_point (w,h,v1,v0)
+            output_line[1] = pt1
+
+        return output_line
+        
     def Draw(self,img):
         # Load your image
         h, w = img.shape[:2]
@@ -78,14 +121,72 @@ class Piste(piste_base):
 
         #transformed_kp = perspect_keypoints.tolist()
         transformed_kp  = [item[0] for item in perspect_keypoints.tolist()]
-        pt = []
+        
+        transfored_dict = {}
+        pts = []
         for index in range(14): #key in self.keypoints.keys():
-            pt.append(np.array(transformed_kp[index], dtype=np.int32))
-        piste_lines = [[pt[0],pt[12]],[pt[1],pt[13]],[pt[0],pt[1]],[pt[2],pt[3]],[pt[4],pt[5]],
-                       [pt[6],pt[7]],[pt[8],pt[9]],[pt[10],pt[11]],[pt[12],pt[13]]]
+            pt = np.array(transformed_kp[index], dtype=np.int32)
+            pts.append(pt)
+            transfored_dict[label_list[index]] = pt
+
+        # piste_lines = [[pt[0],pt[12]],[pt[1],pt[13]],[pt[0],pt[1]],[pt[2],pt[3]],[pt[4],pt[5]],
+        #                [pt[6],pt[7]],[pt[8],pt[9]],[pt[10],pt[11]],[pt[12],pt[13]]]
+        piste_lines = [[pts[0],pts[1]],[pts[2],pts[3]],[pts[4],pts[5]],
+                       [pts[6],pts[7]],[pts[8],pts[9]],[pts[10],pts[11]],[pts[12],pts[13]]]
+        piste_side_lines = [[],[]]
         # Draw each line
         for pt1, pt2 in piste_lines:
             cv2.line(canvas, pt1, pt2, (0, 255, 255), 2)
+
+        # two long lines are handled below, seperately to avoid sign flip due to error on w
+        # as appeared in "20191129_IMG_2244_0.json"
+        far_line = [{},{}]
+        near_line = [{},{}]
+        for key in transfored_dict.keys():
+            pt = transfored_dict[key]
+            if "end_far" in key and 0 <= pt[0] < w and 0 <= pt[1] < h:
+                if len(far_line[0]) == 0:
+                    far_line[0] = {key:pt} 
+                else:
+                    far_line[1] = {key:pt} 
+            if "end_near" in key and 0 <= pt[0] < w and 0 <= pt[1] < h:
+                if len(near_line[0]) == 0:
+                    near_line[0] = {key:pt} 
+                else:
+                    near_line[1] = {key:pt} 
+
+        for key in transfored_dict.keys():
+            pt = transfored_dict[key]
+            if "far" in key and "end" not in key and 0 <= pt[0] < w and 0 <= pt[1] < h:
+                if len(far_line[0]) == 0:
+                    far_line[0] = {key:pt} 
+                elif len(far_line[1]) == 0:
+                    far_line[1] = {key:pt} 
+                else:
+                    (k0, v0),  = far_line[0].items()
+                    (k1, v1),  = far_line[1].items()
+                    d1 = np.linalg.norm(v0-v1) 
+                    d2 = np.linalg.norm(v0-pt) 
+                    if d1 < d2:
+                        far_line[1] = {key:pt} 
+            if "near" in key and "end" not in key and 0 <= pt[0] < w and 0 <= pt[1] < h:
+                if len(near_line[0]) == 0:
+                    near_line[0] = {key:pt} 
+                elif len(near_line[1]) == 0:
+                    near_line[1] = {key:pt} 
+                else:
+                    (k0, v0),  = near_line[0].items()
+                    (k1, v1),  = near_line[1].items()
+                    d1 = np.linalg.norm(v0-v1) 
+                    d2 = np.linalg.norm(v0-pt) 
+                    if d1 < d2:
+                        near_line[1] = {key:pt} 
+
+        piste_side_lines[0] = self.extend_line (w,h,far_line)
+        piste_side_lines[1] = self.extend_line (w,h,near_line)
+        
+        for pt1, pt2 in piste_side_lines:
+            cv2.line(canvas, pt1,pt2, (0, 255, 255), 2)
 
         transparent_result = cv2.addWeighted(canvas, 0.5, img, 0.5, 0)
 
@@ -99,8 +200,11 @@ class Piste(piste_base):
 labelme_path = "J:\\labelme_piste_data\\images"
 files = [f for f in os.listdir(labelme_path) if f.endswith('.json')]
 
-for f in files:
+#for f in files:
+if 2 > 1:
+    f = "[Semi Final] Impeccable!! Vivian Kong v Alexanne Verret l Vancouver Epee Fencing WC 2022_0.json"
     file_path = os.path.join(labelme_path, f)
+    
     # Open and load the JSON file
     with open(file_path, 'r') as file:
         labelme_data = json.load(file)
@@ -113,6 +217,7 @@ for f in files:
     piste_1.Calculate_homography()
 
     image_path = os.path.join(labelme_path, labelme_data["imagePath"])
+
     result_image_name = os.path.join(labelme_path, "PisteAdded",labelme_data["imagePath"])
     image = cv2.imread(image_path)
     print(image_path)
