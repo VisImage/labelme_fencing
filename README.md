@@ -1,3 +1,16 @@
+## Shi Yin, Jan 1, 2026
+1) git clone this repos 
+2) cd labelme_fenicng
+3) conda activate labelme_fencing 
+# if env  labelme_fencing exist, otherwise 
+# conda create -n labelme_fencing python=3.10
+# pip install -e .
+4) labelme
+5) select the image folder
+## The above process tested on windows11, start with CMD (Anaconda Propt (Miniconda3))
+## but should work in wsl and Ubuntu
+
+
 <h1 align="center">
   <img src="labelme/icons/icon.png"><br/>labelme
 </h1>
