@@ -1,14 +1,12 @@
 ## Shi Yin, Jan 1, 2026
-1) git clone this repos 
-2) cd labelme_fenicng
-3) conda activate labelme_fencing 
-# if env  labelme_fencing exist, otherwise 
-# conda create -n labelme_fencing python=3.10
-# pip install -e .
-4) labelme
-5) select the image folder
-## The above process tested on windows11, start with CMD (Anaconda Propt (Miniconda3))
-## but should work in wsl and Ubuntu
+1. git clone this repos 
+2. cd labelme_fenicng
+3. conda create -n labelme python=3.10
+4. conda activate labelme
+5. pip install -e .
+6. labelme and select folder ./fencing/images
+
+The above process tested on windows11, using cmd, Anaconda Propt (Miniconda3). But not work in wsl and Ubuntu 22.04 due Qt and GPU issues
 
 
 <h1 align="center">
