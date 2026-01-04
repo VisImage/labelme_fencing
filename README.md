@@ -1,6 +1,6 @@
 ## Shi Yin, Jan 1, 2026
 
-The sample fencing images are added. The piste points, undistortion, and convert to yolo features are added as well.To work on Windows11 and Ubuntu.22.04, do the followings:
+The sample fencing images are added. The piste points, undistortion, and convert to yolo features are added as well., do the followings:
 1) git clone git@github.com:VisImage/labelme_fencing.git
 2) cd labelme_fencing
 3) conda create -n labelme_fencing python=3.10
@@ -8,11 +8,11 @@ The sample fencing images are added. The piste points, undistortion, and convert
 5) pip install -e .
 6) labelme fencing_piste_sample_data --labels labels.txt // to annotate the piste in a dir of images
 7) pip install opencv-python
-8) python labelme_undistortion_level1.py  // to correct radio distortion in the image when needed
-9) python labelme_to_yolo.py  // to convert data format from labelme (points) to yolo OBB
+8) python labelme_undistortion_level1.py  // to correct radio distortion; Images stored in viz_level1 are for visual verification
+9) python labelme_to_yolo.py  // to convert data format from labelme (points) to yolo OBB; Images stored in yolo_obb_dataset/debug_viz are for visual verification
 
-To avoid possible issues,  "export PYTHONNOUSERSITE=1" is added in file  ~/.bashrc
-
+The above steps tested on Windows11 and Ubuntu.22.04. video tool VideoProc can be used together on windows11; To avoid possible issues on Ubuntu, "export PYTHONNOUSERSITE=1" is added in file  ~/.bashrc
+=======================================================================================================================
 
 <h1 align="center">
   <img src="labelme/icons/icon.png"><br/>labelme
