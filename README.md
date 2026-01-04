@@ -1,14 +1,17 @@
 ## Shi Yin, Jan 1, 2026
-1) git clone this repos 
+
+The sample fencing images are added. The piste points, undistortion, and convert to yolo features are added as well.To work on Windows11 and Ubuntu.22.04, do the followings:
+1) git@github.com:VisImage/labelme_fencing.git
 2) cd labelme_fenicng
-3) conda activate labelme_fencing 
-# if env  labelme_fencing exist, otherwise 
-# conda create -n labelme_fencing python=3.10
-# pip install -e .
-4) labelme
-5) select the image folder
-## The above process tested on windows11, start with CMD (Anaconda Propt (Miniconda3))
-## but should work in wsl and Ubuntu
+3) conda create -n labelme_fencing python=3.10
+4) conda activate labelme_fencing 
+5) pip install -e .
+6) labelme fencing_piste_sample_data --labels labels.txt // to annotate the piste in a dir of images
+7) pip install opencv-python numpy scipy
+8) python labelme_undistortion_level1.py  // to correct radio distortion in the image when needed
+9) python labelme_to_yolo.py  // to convert data format from labelme (points) to yolo OBB
+
+To avoid possible issues on installation of QT and GPU,  "export PYTHONNOUSERSITE=1" is added in file  ~/.bashrc
 
 
 <h1 align="center">

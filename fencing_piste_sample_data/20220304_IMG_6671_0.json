@@ -1,0 +1,108 @@
+{
+  "version": "5.8.2",
+  "flags": {},
+  "shapes": [
+    {
+      "label": "piste_right_onguard_far",
+      "points": [
+        [
+          879.8113207547169,
+          645.6603773584905
+        ]
+      ],
+      "group_id": null,
+      "description": "",
+      "shape_type": "point",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "piste_right_onguard_near",
+      "points": [
+        [
+          1140.1886792452829,
+          721.132075471698
+        ]
+      ],
+      "group_id": null,
+      "description": "",
+      "shape_type": "point",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "piste_right_warn_far",
+      "points": [
+        [
+          1308.1132075471696,
+          572.0754716981132
+        ]
+      ],
+      "group_id": null,
+      "description": "",
+      "shape_type": "point",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "piste_right_warn_near",
+      "points": [
+        [
+          1561.88679245283,
+          622.0754716981132
+        ]
+      ],
+      "group_id": null,
+      "description": "",
+      "shape_type": "point",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "piste_right_end_far",
+      "points": [
+        [
+          1497.7358490566037,
+          544.7169811320755
+        ]
+      ],
+      "group_id": null,
+      "description": "",
+      "shape_type": "point",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "piste_left_border_near",
+      "points": [
+        [
+          0.0,
+          1000.78431372549
+        ]
+      ],
+      "group_id": null,
+      "description": "",
+      "shape_type": "point",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "piste_left_border_far",
+      "points": [
+        [
+          0.0,
+          792.9411764705882
+        ]
+      ],
+      "group_id": null,
+      "description": "",
+      "shape_type": "point",
+      "flags": {},
+      "mask": null
+    }
+  ],
+  "imagePath": "20220304_IMG_6671_0.jpg",
+  "imageData": null,
+  "imageHeight": 1080,
+  "imageWidth": 1920
+}

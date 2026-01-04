@@ -9,3 +9,8 @@
 
 .DS_Store
 .idea/
+
+# Shi Jan 4, 2026
+undistorted*
+yolo_obb_dataset/
+viz_level1/
