@@ -99,6 +99,48 @@
       "shape_type": "point",
       "flags": {},
       "mask": null
+    },
+    {
+      "label": "piste_right_border_far",
+      "points": [
+        [
+          1919.0,
+          792.9411764705882
+        ]
+      ],
+      "group_id": null,
+      "description": "",
+      "shape_type": "point",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "piste_right_border_near",
+      "points": [
+        [
+          1893.8235294117646,
+          1079.0
+        ]
+      ],
+      "group_id": null,
+      "description": "",
+      "shape_type": "point",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "piste_left_border_near",
+      "points": [
+        [
+          0.0,
+          559.6078431372548
+        ]
+      ],
+      "group_id": null,
+      "description": "",
+      "shape_type": "point",
+      "flags": {},
+      "mask": null
     }
   ],
   "imagePath": "20211126_IMG_5756_1.jpg",

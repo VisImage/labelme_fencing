@@ -127,6 +127,34 @@
       "shape_type": "point",
       "flags": {},
       "mask": null
+    },
+    {
+      "label": "piste_left_border_near",
+      "points": [
+        [
+          606.5686274509804,
+          1079.0
+        ]
+      ],
+      "group_id": null,
+      "description": "",
+      "shape_type": "point",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "piste_left_border_far",
+      "points": [
+        [
+          0.0,
+          872.3529411764705
+        ]
+      ],
+      "group_id": null,
+      "description": "",
+      "shape_type": "point",
+      "flags": {},
+      "mask": null
     }
   ],
   "imagePath": "20191129_IMG_2244_1.jpg",

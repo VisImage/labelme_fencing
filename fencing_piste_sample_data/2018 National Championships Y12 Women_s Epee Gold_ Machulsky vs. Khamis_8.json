@@ -113,6 +113,34 @@
       "shape_type": "point",
       "flags": {},
       "mask": null
+    },
+    {
+      "label": "piste_left_border_far",
+      "points": [
+        [
+          0.0,
+          817.3584905660377
+        ]
+      ],
+      "group_id": null,
+      "description": "",
+      "shape_type": "point",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "piste_left_border_near",
+      "points": [
+        [
+          0.0,
+          894.7169811320755
+        ]
+      ],
+      "group_id": null,
+      "description": "",
+      "shape_type": "point",
+      "flags": {},
+      "mask": null
     }
   ],
   "imagePath": "2018 National Championships Y12 Women_s Epee Gold_ Machulsky vs. Khamis_8.jpg",

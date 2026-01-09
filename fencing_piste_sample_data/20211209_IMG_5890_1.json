@@ -99,6 +99,34 @@
       "shape_type": "point",
       "flags": {},
       "mask": null
+    },
+    {
+      "label": "piste_left_border_far",
+      "points": [
+        [
+          0.0,
+          720.3921568627451
+        ]
+      ],
+      "group_id": null,
+      "description": "",
+      "shape_type": "point",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "piste_right_border_near",
+      "points": [
+        [
+          1919.0,
+          845.8823529411765
+        ]
+      ],
+      "group_id": null,
+      "description": "",
+      "shape_type": "point",
+      "flags": {},
+      "mask": null
     }
   ],
   "imagePath": "20211209_IMG_5890_1.jpg",

@@ -71,6 +71,62 @@
       "shape_type": "point",
       "flags": {},
       "mask": null
+    },
+    {
+      "label": "piste_left_border_far",
+      "points": [
+        [
+          0.0,
+          441.04575163398687
+        ]
+      ],
+      "group_id": null,
+      "description": "",
+      "shape_type": "point",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "piste_left_border_near",
+      "points": [
+        [
+          0.0,
+          487.4509803921568
+        ]
+      ],
+      "group_id": null,
+      "description": "",
+      "shape_type": "point",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "piste_right_border_far",
+      "points": [
+        [
+          1279.0,
+          442.35294117647055
+        ]
+      ],
+      "group_id": null,
+      "description": "",
+      "shape_type": "point",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "piste_right_border_near",
+      "points": [
+        [
+          1279.0,
+          487.4509803921568
+        ]
+      ],
+      "group_id": null,
+      "description": "",
+      "shape_type": "point",
+      "flags": {},
+      "mask": null
     }
   ],
   "imagePath": "2021 Orlans Sabre Grand Prix- Women_s Sabre Highlights_2.jpg",

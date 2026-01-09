@@ -113,6 +113,34 @@
       "shape_type": "point",
       "flags": {},
       "mask": null
+    },
+    {
+      "label": "piste_right_border_near",
+      "points": [
+        [
+          1770.2941176470588,
+          1079.0
+        ]
+      ],
+      "group_id": null,
+      "description": "",
+      "shape_type": "point",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "piste_right_border_far",
+      "points": [
+        [
+          1919.0,
+          820.392156862745
+        ]
+      ],
+      "group_id": null,
+      "description": "",
+      "shape_type": "point",
+      "flags": {},
+      "mask": null
     }
   ],
   "imagePath": "20211126_IMG_5756_0.jpg",

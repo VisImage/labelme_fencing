@@ -34,8 +34,8 @@
       "label": "piste_right_onguard_far",
       "points": [
         [
-          707.7272727272727,
-          839.090909090909
+          695.7843137254903,
+          841.9607843137254
         ]
       ],
       "group_id": null,
@@ -64,6 +64,34 @@
         [
           1697.7272727272725,
           922.7272727272726
+        ]
+      ],
+      "group_id": null,
+      "description": "",
+      "shape_type": "point",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "piste_right_border_near",
+      "points": [
+        [
+          1919.0,
+          913.5294117647057
+        ]
+      ],
+      "group_id": null,
+      "description": "",
+      "shape_type": "point",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "piste_right_border_far",
+      "points": [
+        [
+          1919.0,
+          776.2745098039214
         ]
       ],
       "group_id": null,

@@ -595,11 +595,103 @@ class Canvas(QtWidgets.QWidget):
         y2 = bottom - point.y()
         self.offsets = QtCore.QPointF(x1, y1), QtCore.QPointF(x2, y2)
 
+
+    def _is_border_constrained_label(self, label: str) -> bool:
+
+        """Return True if label should be constrained to move along image border."""
+
+        return bool(label) and ("_border_far" in label or "_border_near" in label)
+
+
+    def _project_to_nearest_border(self, p: QtCore.QPointF) -> QtCore.QPointF:
+
+        """Project point p (image coordinates) to the nearest image border."""
+
+        W = self.pixmap.width()
+
+        H = self.pixmap.height()
+
+        if W <= 0 or H <= 0:
+
+            return p
+
+        x = float(p.x())
+
+        y = float(p.y())
+
+        # Clamp inside bounds
+
+        x = max(0.0, min(x, float(W - 1)))
+
+        y = max(0.0, min(y, float(H - 1)))
+
+        d_left = x
+
+        d_right = float(W - 1) - x
+
+        d_top = y
+
+        d_bottom = float(H - 1) - y
+
+        m = min(d_left, d_right, d_top, d_bottom)
+
+        if m == d_left:
+
+            x = 0.0
+
+        elif m == d_right:
+
+            x = float(W - 1)
+
+        elif m == d_top:
+
+            y = 0.0
+
+        else:
+
+            y = float(H - 1)
+
+        return QtCore.QPointF(x, y)
+
+
     def boundedMoveVertex(self, pos):
+
         index, shape = self.hVertex, self.hShape
+
         point = shape[index]  # type: ignore[index]
+
+        # Keep existing behavior: do not allow dragging outside pixmap
+
         if self.outOfPixmap(pos):
+
             pos = self.intersectionPoint(point, pos)
+
+    
+
+        # Constrain specific labels (containing _border_far or _border_near) to move along the image border.
+
+        # Apply primarily to point shapes (keypoints).
+
+        try:
+
+            shape_type = shape.shape_type  # type: ignore[union-attr]
+
+            label = shape.label            # type: ignore[union-attr]
+
+        except Exception:
+
+            shape_type = None
+
+            label = None
+
+    
+
+        if shape_type == "point" and self._is_border_constrained_label(label):
+
+            pos = self._project_to_nearest_border(pos)
+
+    
+
         shape.moveVertexBy(index, pos - point)  # type: ignore[union-attr]
 
     def boundedMoveShapes(self, shapes, pos):

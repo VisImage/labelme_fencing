@@ -62,8 +62,8 @@
       "label": "piste_right_onguard_near",
       "points": [
         [
-          1027.5757575757575,
-          516.9696969696969
+          1029.5604395604396,
+          514.945054945055
         ]
       ],
       "group_id": null,
@@ -78,6 +78,62 @@
         [
           1002.121212121212,
           472.12121212121207
+        ]
+      ],
+      "group_id": null,
+      "description": "",
+      "shape_type": "point",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "piste_left_border_far",
+      "points": [
+        [
+          0.0,
+          467.69230769230774
+        ]
+      ],
+      "group_id": null,
+      "description": "",
+      "shape_type": "point",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "piste_left_border_near",
+      "points": [
+        [
+          0.0,
+          516.0439560439561
+        ]
+      ],
+      "group_id": null,
+      "description": "",
+      "shape_type": "point",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "piste_right_border_far",
+      "points": [
+        [
+          1279.0,
+          472.0879120879122
+        ]
+      ],
+      "group_id": null,
+      "description": "",
+      "shape_type": "point",
+      "flags": {},
+      "mask": null
+    },
+    {
+      "label": "piste_right_border_near",
+      "points": [
+        [
+          1279.0,
+          518.2417582417582
         ]
       ],
       "group_id": null,
