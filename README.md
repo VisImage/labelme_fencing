@@ -1,17 +1,21 @@
-## Shi Yin, Jan 1, 2026
+# Shi Yin, Jan 1, 2026
 
-The sample fencing images are added. The piste points, undistortion, and convert to yolo features are added as well., do the followings:
+## To install
 1) git clone git@github.com:VisImage/labelme_fencing.git
 2) cd labelme_fencing
 3) conda create -n labelme_fencing python=3.10
 4) conda activate labelme_fencing 
 5) pip install -e .
-6) labelme fencing_piste_sample_data --labels labels.txt // to annotate the piste in a dir of images
-7) pip install opencv-python
-8) python labelme_undistortion_level1.py  // to correct radio distortion; Images stored in viz_level1 are for visual verification
+6) pip install opencv-python
+
+### It starts with a folder containing sample images, which are from ultralytics. Yolo is used to filter images. Fencer detection is used in selecting smple images used here. Different filter shold be used for different training samples.
+
+## To annotate piste (which is what this folder can do so far), do the followings:
+1) labelme fencing_piste_sample_data --labels labels.txt // to annotation is add as .json file in the same folder as images
+2) python labelme_undistortion_level1.py  // to correct radio distortion; Images stored in viz_level1 are for visual verification
 9) python labelme_to_yolo.py  // to convert data format from labelme (points) to yolo OBB; Images stored in yolo_obb_dataset/debug_viz are for visual verification
 
-The above steps tested on Windows11 and Ubuntu.22.04. video tool VideoProc can be used together on windows11; To avoid possible issues on Ubuntu, "export PYTHONNOUSERSITE=1" is added in file  ~/.bashrc
+### The above steps tested on Windows11 and Ubuntu.22.04. video tool VideoProc can be used together on windows11; To avoid possible issues on Ubuntu, "export PYTHONNOUSERSITE=1" is added in file  ~/.bashrc
 =======================================================================================================================
 
 <h1 align="center">
